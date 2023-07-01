@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Toast from '../Toast';
+import ToastShelf from '../ToastShelf';
 import Button from '../Button';
 
 import styles from './ToastPlayground.module.css';
@@ -25,11 +25,12 @@ function ToastPlayground({ message, setMessage, variant, setVariant }) {
         <h1>Toast Playground</h1>
       </header>
 
-      {isVisible && (
-        <Toast variant={variant} handleDismiss={handleDismiss}>
-          {message}
-        </Toast>
-      )}
+      <ToastShelf />
+      {/*{isVisible && (*/}
+      {/*  <Toast variant={variant} handleDismiss={handleDismiss}>*/}
+      {/*    {message}*/}
+      {/*  </Toast>*/}
+      {/*})}*/}
 
 
       <div className={styles.controlsWrapper}>
