@@ -8,10 +8,12 @@ import styles from './ToastPlayground.module.css';
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground({ message, setMessage, variant, setVariant }) {
+  const [isVisible, setIsVisible] = React.useState(false);
   function handleSubmit() {
-    alert(`You submitted: ${message} (${variant})`);
-    setMessage('');
+    setIsVisible(true);
+    // event.target.value = ''; // TODO: テキストエリアの値をクリア
   }
+
   return (
     <div className={styles.wrapper}>
       <header>
@@ -19,9 +21,12 @@ function ToastPlayground({ message, setMessage, variant, setVariant }) {
         <h1>Toast Playground</h1>
       </header>
 
-      <Toast variant={variant}>
-        {message}
-      </Toast>
+      {isVisible && (
+        <Toast variant={variant}>
+          {message}
+        </Toast>
+      )}
+
 
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
