@@ -14,6 +14,10 @@ function ToastPlayground({ message, setMessage, variant, setVariant }) {
     // event.target.value = ''; // TODO: テキストエリアの値をクリア
   }
 
+  function handleDismiss() {
+    setIsVisible(false);
+  }
+
   return (
     <div className={styles.wrapper}>
       <header>
@@ -22,7 +26,7 @@ function ToastPlayground({ message, setMessage, variant, setVariant }) {
       </header>
 
       {isVisible && (
-        <Toast variant={variant}>
+        <Toast variant={variant} handleDismiss={handleDismiss}>
           {message}
         </Toast>
       )}
