@@ -20,7 +20,8 @@ function ToastPlayground({ message, setMessage, variant, setVariant }) {
     event.preventDefault();
     // setIsVisible(true);
     console.log('Run handleSubmit method!');
-    setToastList([...toastList, { message, variant }]);
+    const keyId = crypto.randomUUID();
+    setToastList([...toastList, { keyId, message, variant }]);
     event.target.message.value = '';
   }
 
