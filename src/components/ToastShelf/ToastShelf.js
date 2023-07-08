@@ -11,6 +11,7 @@ function ToastShelf({ toastList, handleDismiss }) {
           return (
             <li key={toast.keyId} className={styles.toastWrapper}>
               <Toast
+                keyId={toast.keyId}
                 variant={toast.variant}
                 handleDismiss={handleDismiss}
               >

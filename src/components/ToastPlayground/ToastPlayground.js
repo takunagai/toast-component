@@ -25,9 +25,10 @@ function ToastPlayground({ message, setMessage, variant, setVariant }) {
     event.target.message.value = '';
   }
 
-  function handleDismiss() {
+  function handleDismiss(keyId) {
     // setIsVisible(false);
     console.log('Run handleDismiss method!');
+    setToastList(toastList.filter((toast) => toast.keyId !== keyId));
   }
 
   return (
