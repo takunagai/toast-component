@@ -3,11 +3,11 @@ import React from 'react';
 import Toast from '../Toast';
 import styles from './ToastShelf.module.css';
 
-function ToastShelf({ toastList, handleDismiss }) {
-  if (toastList.length) {
+function ToastShelf({ toasts, handleDismiss }) {
+  if (toasts.length) {
     return (
       <ol className={styles.wrapper}>
-        {toastList.map((toast) => {
+        {toasts.map((toast) => {
           return (
             <li key={toast.keyId} className={styles.toastWrapper}>
               <Toast

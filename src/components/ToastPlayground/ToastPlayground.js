@@ -10,30 +10,30 @@ const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 function ToastPlayground() {
   const [message, setMessage] = React.useState('');
   const [variant, setVariant] = React.useState('notice');
-  const [toastList, setToastList] = React.useState([]);
+  const [toasts, setToasts] = React.useState([]);
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    const nextToastList = [
-      ...toastList,
+    const nextToasts = [
+      ...toasts,
       {
         keyId: crypto.randomUUID(),
         message,
         variant
       }
     ];
-    setToastList(nextToastList);
+    setToasts(nextToasts);
     event.target.message.value = '';
     setVariant('notice');
   }
 
   function handleDismiss(keyId) {
-    const nextToastList = toastList.filter((toast) => {
+    const nextToasts = toasts.filter((toast) => {
       return toast.keyId !== keyId;
     })
 
-    setToastList(nextToastList);
+    setToasts(nextToasts);
   }
 
   return (
@@ -44,7 +44,7 @@ function ToastPlayground() {
       </header>
 
       <ToastShelf
-        toastList={toastList}
+        toasts={toasts}
         handleDismiss={handleDismiss}
       />
 
