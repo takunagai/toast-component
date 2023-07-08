@@ -18,9 +18,10 @@ function ToastPlayground({ message, setMessage, variant, setVariant }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    setIsVisible(true);
+    // setIsVisible(true);
     console.log('Run handleSubmit method!');
-    // event.target.value = ''; // TODO: テキストエリアの値をクリア
+    setToastList([...toastList, { message, variant }]);
+    event.target.message.value = '';
   }
 
   function handleDismiss() {
@@ -55,6 +56,7 @@ function ToastPlayground({ message, setMessage, variant, setVariant }) {
             <div className={styles.inputWrapper}>
               <textarea
                 id="message"
+                name="message"
                 className={styles.messageInput}
                 onChange={(event) => {
                   setMessage(event.target.value);
