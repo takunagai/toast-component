@@ -8,7 +8,7 @@ import styles from './ToastPlayground.module.css';
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground({ message, setMessage, variant, setVariant }) {
-  const [isVisible, setIsVisible] = React.useState(false);
+  // const [isVisible, setIsVisible] = React.useState(false);
   const [toastList, setToastList] = React.useState([]);
   // [
   //   {message: 'Example notice toast', variant: 'notice'},
@@ -25,7 +25,8 @@ function ToastPlayground({ message, setMessage, variant, setVariant }) {
   }
 
   function handleDismiss() {
-    setIsVisible(false);
+    // setIsVisible(false);
+    console.log('Run handleDismiss method!');
   }
 
   return (
@@ -35,7 +36,7 @@ function ToastPlayground({ message, setMessage, variant, setVariant }) {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf toastList={toastList} />
+      <ToastShelf toastList={toastList} handleDismiss={handleDismiss} />
       {/*{isVisible && (*/}
       {/*  <Toast variant={variant} handleDismiss={handleDismiss}>*/}
       {/*    {message}*/}
