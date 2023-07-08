@@ -9,7 +9,6 @@ function App() {
 
   return (
     <>
-      <p>message: {message}, variant: {variant}</p>
       <ToastPlayground
         message={message}
         setMessage={setMessage}
