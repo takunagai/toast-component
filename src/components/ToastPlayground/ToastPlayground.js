@@ -15,6 +15,7 @@ function ToastPlayground({ message, setMessage, variant, setVariant }) {
     const keyId = crypto.randomUUID();
     setToastList([...toastList, { keyId, message, variant }]);
     event.target.message.value = '';
+    setVariant('notice');
   }
 
   function handleDismiss(keyId) {
