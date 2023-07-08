@@ -27,9 +27,11 @@ function ToastPlayground({ message, setMessage, variant, setVariant }) {
   }
 
   function handleDismiss(keyId) {
-    setToastList(toastList.filter(
-      (toast) => toast.keyId !== keyId)
-    );
+    const nextToastList = toastList.filter((toast) => {
+      return toast.keyId !== keyId;
+    })
+
+    setToastList(nextToastList);
   }
 
   return (
