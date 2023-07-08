@@ -7,7 +7,9 @@ import styles from './ToastPlayground.module.css';
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
-function ToastPlayground({ message, setMessage, variant, setVariant }) {
+function ToastPlayground() {
+  const [message, setMessage] = React.useState('');
+  const [variant, setVariant] = React.useState('notice');
   const [toastList, setToastList] = React.useState([]);
 
   function handleSubmit(event) {
