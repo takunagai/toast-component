@@ -25,8 +25,8 @@ function ToastPlayground() {
     setVariant('notice');
   }
 
-  function handleDismiss(keyId) {
-    dismissToast(keyId);
+  function handleDismiss(id) {
+    dismissToast(id);
   }
 
   return (

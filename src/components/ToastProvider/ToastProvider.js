@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ToastContext = React.createContext();
+export const ToastContext = React.createContext({});
 
 function ToastProvider({ children }) {
   const [toasts, setToasts] = React.useState([]);
@@ -9,7 +9,7 @@ function ToastProvider({ children }) {
     const nextToasts = [
       ...toasts,
       {
-        keyId: crypto.randomUUID(),
+        id: crypto.randomUUID(),
         message,
         variant
       }
@@ -18,9 +18,9 @@ function ToastProvider({ children }) {
     setToasts(nextToasts);
   }
 
-  function dismissToast(keyId) {
+  function dismissToast(id) {
     const nextToasts = toasts.filter((toast) => {
-      return toast.keyId !== keyId;
+      return toast.id !== id;
     });
 
     setToasts(nextToasts);
@@ -32,7 +32,6 @@ function ToastProvider({ children }) {
         toasts,
         createToast,
         dismissToast,
-        setToasts,
       }}
     >
       {children}

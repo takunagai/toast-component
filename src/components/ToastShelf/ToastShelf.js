@@ -12,9 +12,9 @@ function ToastShelf({ handleDismiss }) {
       <ol className={styles.wrapper}>
         {toasts.map((toast) => {
           return (
-            <li key={toast.keyId} className={styles.toastWrapper}>
+            <li key={toast.id} className={styles.toastWrapper}>
               <Toast
-                keyId={toast.keyId}
+                id={toast.id}
                 variant={toast.variant}
                 handleDismiss={handleDismiss}
               >
