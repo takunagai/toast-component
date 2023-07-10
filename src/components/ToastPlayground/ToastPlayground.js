@@ -15,8 +15,13 @@ function ToastPlayground() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    if (message === '') {
+      alert('Please enter a message');
+      return;
+    }
     createToast(message, variant);
     event.target.message.value = '';
+    setMessage('');
     setVariant('notice');
   }
 
