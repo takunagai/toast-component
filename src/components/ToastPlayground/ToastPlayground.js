@@ -20,9 +20,10 @@ function ToastPlayground() {
       return;
     }
     createToast(message, variant);
-    event.target.message.value = '';
     setMessage('');
     setVariant('notice');
+    event.target.message.value = '';
+    inputRef.current.focus();
   }
 
   function handleDismiss(id) {
@@ -32,6 +33,11 @@ function ToastPlayground() {
   function handleDismissAll() {
     dismissAllToasts();
   }
+
+  const inputRef = React.useRef();
+  React.useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   useEscapeKey(handleDismissAll);
 
@@ -59,6 +65,7 @@ function ToastPlayground() {
             </label>
             <div className={styles.inputWrapper}>
               <textarea
+                ref={inputRef}
                 id="message"
                 name="message"
                 className={styles.messageInput}
