@@ -26,9 +26,9 @@ function ToastProvider({ children }) {
     setToasts(nextToasts);
   }
 
-  function dismissAllToasts() {
+  const dismissAllToasts = React.useCallback(() => {
     setToasts([]);
-  }
+  }, []);
 
   return (
     <ToastContext.Provider
