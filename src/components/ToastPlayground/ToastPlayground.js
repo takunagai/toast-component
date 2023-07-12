@@ -9,7 +9,7 @@ import styles from './ToastPlayground.module.css';
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
-  const { createToast, dismissToast, toasts } = React.useContext(ToastContext);
+  const { createToast, dismissToast, dismissAllToasts, toasts } = React.useContext(ToastContext);
   const [message, setMessage] = React.useState('');
   const [variant, setVariant] = React.useState('notice');
 
@@ -28,6 +28,12 @@ function ToastPlayground() {
   function handleDismiss(id) {
     dismissToast(id);
   }
+
+  function handleDismissAll() {
+    dismissAllToasts();
+  }
+
+  useEscapeKey(handleDismissAll);
 
   return (
     <div className={styles.wrapper}>
@@ -102,6 +108,22 @@ function ToastPlayground() {
       </div>
     </div>
   );
+}
+
+function useEscapeKey(callback) {
+  React.useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.code === "Escape") {
+        callback()
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [callback])
 }
 
 export default ToastPlayground;
