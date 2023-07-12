@@ -36,7 +36,6 @@ function Toast({ id, variant, handleDismiss, children }) {
         aria-live="off"
       >
         <X size={24} onClick={() => {handleDismiss(id)}} />
-        {/* <VisuallyHidden>Dismiss message</VisuallyHidden> Aria Label に移動 */}
       </button>
     </div>
   );
