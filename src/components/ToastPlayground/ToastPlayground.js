@@ -48,10 +48,12 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf
-        toasts={toasts}
-        handleDismiss={handleDismiss}
-      />
+      {toasts.length > 0 &&
+        <ToastShelf
+          toasts={toasts}
+          handleDismiss={handleDismiss}
+        />
+      }
 
       <div className={styles.controlsWrapper}>
         <form onSubmit={handleSubmit}>
