@@ -56,12 +56,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      {toasts.length &&
-        <ToastShelf
-          toasts={toasts}
-          handleDismiss={handleDismiss}
-        />
-      }
+      {toasts.length && <ToastShelf />}
 
       <div className={styles.controlsWrapper}>
         <form onSubmit={handleSubmit}>

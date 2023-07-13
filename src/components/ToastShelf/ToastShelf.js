@@ -7,6 +7,8 @@ import styles from './ToastShelf.module.css';
 function ToastShelf() {
   const { toasts } = React.useContext(ToastContext);
 
+  if (!toasts.length) return;
+
   return (
     <ol
       className={styles.wrapper}
