@@ -11,7 +11,6 @@ const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 function ToastPlayground() {
   const {
     createToast,
-    dismissToast,
     dismissAllToasts,
     toasts
   } = React.useContext(ToastContext);
@@ -38,19 +37,11 @@ function ToastPlayground() {
     inputRef.current.focus();
   }
 
-  function handleDismiss(id) {
-    dismissToast(id);
-  }
-
-  function handleDismissAll() {
-    dismissAllToasts();
-  }
-
   React.useEffect(() => {
     inputRef.current.focus();
   }, []);
 
-  useEscapeKey(handleDismissAll);
+  useEscapeKey(dismissAllToasts);
 
   return (
     <div className={styles.wrapper}>
