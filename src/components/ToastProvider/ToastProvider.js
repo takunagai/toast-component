@@ -19,7 +19,6 @@ function ToastProvider({ children }) {
   }
 
   function dismissToast(id) {
-    if (!id || !toasts.length) return;
     const nextToasts = toasts?.filter((toast) => {
       return toast.id !== id;
     });
