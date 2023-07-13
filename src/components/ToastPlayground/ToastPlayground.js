@@ -19,7 +19,10 @@ function ToastPlayground() {
   const [message, setMessage] = React.useState('');
   const [variant, setVariant] = React.useState('notice');
 
-  const inputRef = React.useRef(null); // null で読み取り専用
+  const messageInputId = React.useId();
+  const messageElement = document.getElementById(messageInputId);
+
+  const inputRef = React.useRef(null); // Set `null` to read only
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -31,7 +34,7 @@ function ToastPlayground() {
     createToast(message, variant);
     setMessage('');
     setVariant('notice');
-    event.target.message.value = '';
+    messageElement.value = '';
     inputRef.current.focus();
   }
 
@@ -62,7 +65,7 @@ function ToastPlayground() {
         <form onSubmit={handleSubmit}>
           <div className={styles.row}>
             <label
-              htmlFor="message"
+              htmlFor={messageInputId}
               className={styles.label}
               style={{ alignSelf: 'baseline' }}
             >
@@ -71,8 +74,7 @@ function ToastPlayground() {
             <div className={styles.inputWrapper}>
               <textarea
                 ref={inputRef}
-                id="message"
-                name="message"
+                id={messageInputId}
                 className={styles.messageInput}
                 onChange={(event) => {
                   setMessage(event.target.value);
