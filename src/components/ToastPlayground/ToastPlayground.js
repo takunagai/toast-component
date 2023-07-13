@@ -25,6 +25,7 @@ function ToastPlayground() {
     event.preventDefault();
     if (message === '') {
       alert('Please enter a message');
+      inputRef.current.focus();
       return;
     }
     createToast(message, variant);
