@@ -9,9 +9,17 @@ import styles from './ToastPlayground.module.css';
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
-  const { createToast, dismissToast, dismissAllToasts, toasts } = React.useContext(ToastContext);
+  const {
+    createToast,
+    dismissToast,
+    dismissAllToasts,
+    toasts
+  } = React.useContext(ToastContext);
+
   const [message, setMessage] = React.useState('');
   const [variant, setVariant] = React.useState('notice');
+
+  const inputRef = React.useRef(null); // null で読み取り専用
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -34,7 +42,6 @@ function ToastPlayground() {
     dismissAllToasts();
   }
 
-  const inputRef = React.useRef();
   React.useEffect(() => {
     inputRef.current.focus();
   }, []);
@@ -48,7 +55,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      {toasts.length > 0 &&
+      {toasts.length &&
         <ToastShelf
           toasts={toasts}
           handleDismiss={handleDismiss}
