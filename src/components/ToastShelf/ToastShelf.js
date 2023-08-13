@@ -14,7 +14,7 @@ function ToastShelf() {
       className={styles.wrapper}
       role="region"
       aria-live="polite"
-      aria-label="Notification"
+      aria-label="Notification" // assertive ならチャイムが鳴る
     >
       {toasts.map((toast) => {
         return (
