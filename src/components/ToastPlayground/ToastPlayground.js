@@ -16,7 +16,7 @@ function ToastPlayground() {
   } = React.useContext(ToastContext);
 
   const [message, setMessage] = React.useState('');
-  const [variant, setVariant] = React.useState('notice');
+  const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
 
   const messageInputId = React.useId();
   const messageElement = document.getElementById(messageInputId);
@@ -32,7 +32,7 @@ function ToastPlayground() {
     }
     createToast(message, variant);
     setMessage('');
-    setVariant('notice');
+    setVariant(VARIANT_OPTIONS[0]);
     messageElement.value = '';
     inputRef.current.focus();
   }
