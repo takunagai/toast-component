@@ -11,7 +11,6 @@ const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 function ToastPlayground() {
   const {
     createToast,
-    dismissAllToasts,
     toasts
   } = React.useContext(ToastContext);
 
@@ -41,7 +40,6 @@ function ToastPlayground() {
     inputRef.current.focus();
   }, []);
 
-  useEscapeKey(dismissAllToasts);
 
   return (
     <div className={styles.wrapper}>
@@ -113,22 +111,6 @@ function ToastPlayground() {
       </div>
     </div>
   );
-}
-
-function useEscapeKey(callback) {
-  React.useEffect(() => {
-    function handleKeyDown(event) {
-      if (event.code === "Escape") {
-        callback()
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    }
-  }, [callback])
 }
 
 export default ToastPlayground;

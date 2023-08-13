@@ -1,5 +1,7 @@
 import React from "react";
 
+import useKeydown from '../../hooks/use-keydown';
+
 export const ToastContext = React.createContext({});
 
 function ToastProvider({ children }) {
@@ -18,6 +20,14 @@ function ToastProvider({ children }) {
     setToasts(nextToasts);
   }
 
+
+  const handleEscape = React.useCallback(() => {
+    setToasts([]);
+  }, []);
+
+  useKeydown('Escape', handleEscape);
+
+
   function dismissToast(id) {
     const nextToasts = toasts?.filter((toast) => {
       return toast.id !== id;
@@ -26,9 +36,6 @@ function ToastProvider({ children }) {
     setToasts(nextToasts);
   }
 
-  const dismissAllToasts = React.useCallback(() => {
-    setToasts([]);
-  }, []);
 
   return (
     <ToastContext.Provider
@@ -36,7 +43,6 @@ function ToastProvider({ children }) {
         toasts,
         createToast,
         dismissToast,
-        dismissAllToasts,
       }}
     >
       {children}
