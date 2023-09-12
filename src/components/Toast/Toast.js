@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import {
   AlertOctagon,
   AlertTriangle,
@@ -24,7 +25,7 @@ function Toast({ id, variant, children }) {
 
   const Icon = ICONS_BY_VARIANT[variant];
 
-  return (
+  return createPortal(
     <div className={`${styles.toast} ${styles[variant]}`}>
       <div className={styles.iconContainer}>
         <Icon size={24} />
@@ -40,7 +41,8 @@ function Toast({ id, variant, children }) {
       >
         <X size={24} onClick={() => {dismissToast(id)}} />
       </button>
-    </div>
+    </div>,
+    document.querySelector('#toastshelf-root')
   );
 }
 
